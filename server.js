@@ -46,7 +46,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 
 // everything that starts with "/api" below here requires an auth token!
-app.use('/api', ensureAuth);
+app.use('/api/my', ensureAuth);
 
 // get search results
 app.get('/api/beers', async(req, res) => {
