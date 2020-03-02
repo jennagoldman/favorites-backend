@@ -51,6 +51,7 @@ app.use('/api/my', ensureAuth);
 // get search results
 app.get('/api/beers', async(req, res) => {
     const data = await request.get(`https://sandbox-api.brewerydb.com/v2/search?key=${process.env.API_KEY}&type=beer&q=${req.query.search}`);
+    console.log(data);
 
     res.json(data.body);
 });
