@@ -46,11 +46,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', authRoutes);
 
 // everything that starts with "/api" below here requires an auth token!
-app.use('/api', ensureAuth);
+app.use('/api/my', ensureAuth);
 
 // get search results
 app.get('/api/beers', async(req, res) => {
     const data = await request.get(`https://sandbox-api.brewerydb.com/v2/search?key=${process.env.API_KEY}&type=beer&q=${req.query.search}`);
+    console.log(data);
 
     res.json(data.body);
 });
