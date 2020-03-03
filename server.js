@@ -51,11 +51,11 @@ app.use('/api/my', ensureAuth);
 // get search results
 app.get('/api/beers', async(req, res) => {
     try {
-        const data = await request.get(`https://sandbox-api.brewerydb.com/v2/search?key=${process.env.API_KEY}&type=beer&q=${req.query.search}`);
+        const data = await request.get(`https://api.untappd.com/v4/search/beer?access_token=${process.env.API_KEY}&q=${req.query.search}`);
         res.json(data.body);
     } catch (err) {
         console.error(err);
-}
+    }
 });
 
 // get favorites
